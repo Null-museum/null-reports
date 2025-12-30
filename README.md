@@ -25,19 +25,7 @@
 - 🔍 **Lightbox Viewer** - Click any screenshot for a full-screen view
 - 🌍 **Multilingual** - Available in English and Russian
 
-### Deploy to Netlify
-
-The easiest way to deploy is using the included `netlify.toml` configuration:
-
-1. Log in to [Netlify](https://www.netlify.com)
-2. Click **"Add new site"** → **"Import an existing project"**
-3. Select **GitHub** and choose your `null-reports` repository
-4. Netlify will detect the `netlify.toml` file and automatically configure:
-   - Build command: `npm run build`
-   - Publish directory: `.vitepress/dist`
-5. Click **Deploy**
-
-Your site will be live in minutes! All future commits will automatically trigger a new deployment.
+ 
 
 ### 🚀 How to Contribute
 
