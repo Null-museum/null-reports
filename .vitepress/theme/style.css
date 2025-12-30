@@ -1,0 +1,246 @@
+/**
+ * Custom styles for NullMuseum Gallery
+ * Mobile-first, responsive design
+ */
+
+:root {
+  --gallery-gap: 1rem;
+  --gallery-columns: 1;
+  --lightbox-bg: rgba(0, 0, 0, 0.95);
+  --transition-speed: 0.3s;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  :root {
+    --gallery-gap: 1.5rem;
+    --gallery-columns: 2;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  :root {
+    --gallery-gap: 2rem;
+    --gallery-columns: 3;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  :root {
+    --gallery-columns: 4;
+  }
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gallery-columns), 1fr);
+  gap: var(--gallery-gap);
+  padding: var(--gallery-gap);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  background: var(--vp-c-bg-soft);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item:active {
+  transform: translateY(-2px);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-speed) ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--lightbox-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn var(--transition-speed) ease forwards;
+  touch-action: none;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  color: white;
+  font-size: 24px;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.lightbox-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  color: white;
+  font-size: 24px;
+  z-index: 10000;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-nav.prev {
+  left: 20px;
+}
+
+.lightbox-nav.next {
+  right: 20px;
+}
+
+.lightbox-counter {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+  z-index: 10000;
+}
+
+/* Loading skeleton */
+.gallery-item.loading {
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-bg-soft) 0%,
+    var(--vp-c-bg-mute) 50%,
+    var(--vp-c-bg-soft) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .lightbox-close,
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .lightbox-close {
+    top: 16px;
+    right: 16px;
+  }
+  
+  .lightbox-nav.prev {
+    left: 16px;
+  }
+  
+  .lightbox-nav.next {
+    right: 16px;
+  }
+  
+  .lightbox-counter {
+    bottom: 20px;
+    font-size: 12px;
+  }
+}
+
+/* Empty state */
+.gallery-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--vp-c-text-2);
+}
+
+.gallery-empty h3 {
+  margin-top: 1rem;
+  color: var(--vp-c-text-1);
+}

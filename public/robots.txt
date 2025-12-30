@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://null-museum.github.io/null-reports/sitemap.xml
+
+# Crawl-delay for polite crawlers
+Crawl-delay: 1

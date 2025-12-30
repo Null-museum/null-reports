@@ -1,0 +1,17 @@
+{
+  "name": "nullmuseum",
+  "version": "1.0.0",
+  "description": "A community-driven image gallery powered by VitePress",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "keywords": ["vitepress", "gallery", "images", "community"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vitepress": "^1.0.0"
+  }
+}

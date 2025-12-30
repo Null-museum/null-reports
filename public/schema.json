@@ -1,0 +1,27 @@
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NullMuseum",
+    "description": "Community-driven gallery of NULL error screenshots from various programs and systems",
+    "url": "https://null-museum.github.io/null-reports",
+    "inLanguage": [
+        "en",
+        "ru"
+    ],
+    "publisher": {
+        "@type": "Organization",
+        "name": "NullMuseum Community",
+        "url": "https://github.com/Null-museum"
+    },
+    "potentialAction": {
+        "@type": "ContributeAction",
+        "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://github.com/Null-museum/null-reports",
+            "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+            ]
+        }
+    }
+}
